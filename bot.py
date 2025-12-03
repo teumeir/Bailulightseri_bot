@@ -1,3 +1,4 @@
+import os
 import asyncio
 import aiosqlite
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
@@ -83,8 +84,7 @@ async def send_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def main():
     await init_db()
 
-    app = ApplicationBuilder().token("8598664221:AAGcvlMYKZ9UIic8YNhsWlueJyW0hg1Td6I").build()
-
+        app = ApplicationBuilder().token(os.environ['8598664221:AAGcvlMYKZ9UIic8YNhsWlueJyW0hg1Td6I']).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("list", list_videos))
     app.add_handler(MessageHandler(filters.VIDEO, handle_video))
